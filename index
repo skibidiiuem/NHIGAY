@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SKIBIDI TRUC NHI</title>
+  <meta name="description" content="ERRRRRR GAY" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+
+      background:
+        radial-gradient(
+          circle at 50% 42%,
+          rgba(255, 105, 150, .16),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(255, 180, 210, .12),
+          transparent 25%
+        ),
+        linear-gradient(
+          135deg,
+          #160812,
+          #2b0c1d 45%,
+          #12060e
+        );
+
+      color: white;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* =========================
+        SAO NỀN
+    ========================== */
+
+    .stars,
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .stars {
+      z-index: -2;
+    }
+
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .8);
+      animation: twinkle 2s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%,
+      100% {
+        opacity: .15;
+        transform: scale(.7);
+      }
+
+      50% {
+        opacity: .9;
+        transform: scale(1.4);
+      }
+    }
+
+    /* =========================
+        TIM NHỎ RƠI
+    ========================== */
+
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      font-size: var(--size);
+      opacity: var(--opacity);
+
+      filter:
+        drop-shadow(
+          0 0 8px rgba(255, 80, 130, .55)
+        );
+
+      animation:
+        fall var(--duration)
+        linear infinite;
+
+      animation-delay: var(--delay);
+    }
+
+    @keyframes fall {
+      0% {
+        transform:
+          translate3d(0, 0, 0)
+          rotate(0deg);
+      }
+
+      25% {
+        transform:
+          translate3d(var(--drift), -25vh, 0)
+          rotate(80deg);
+      }
+
+      50% {
+        transform:
+          translate3d(
+            calc(var(--drift) * -0.7),
+            -50vh,
+            0
+          )
+          rotate(170deg);
+      }
+
+      75% {
+        transform:
+          translate3d(var(--drift), -75vh, 0)
+          rotate(260deg);
+      }
+
+      100% {
+        transform:
+          translate3d(
+            calc(var(--drift) * -0.5),
+            -115vh,
+            0
+          )
+          rotate(360deg);
+      }
+    }
+
+    /* =========================
+        KHUNG CHÍNH
+    ========================== */
+
+    main {
+      width: min(1100px, 94vw);
+      min-height: 100vh;
+
+      display: grid;
+      place-items: center;
+
+      padding: 40px 20px;
+
+      position: relative;
+    }
+
+    .hero {
+      position: relative;
+
+      width: min(760px, 88vw);
+      aspect-ratio: 1 / .92;
+
+      display: grid;
+      place-items: center;
+    }
+
+    /* =========================
+        TRÁI TIM CHÍNH
+    ========================== */
+
+    .big-heart {
+      position: relative;
+
+      width: 48%;
+
+      aspect-ratio: 1 / 1;
+
+      transform: rotate(-45deg);
+
+      background:
+        linear-gradient(
+          145deg,
+          #ff668f,
+          #ff174f 55%,
+          #d6003d
+        );
+
+      border-radius: 12%;
+
+      box-shadow:
+        0 0 35px rgba(255, 37, 91, .55),
+        0 0 90px rgba(255, 37, 91, .22),
+        inset -12px -12px 25px rgba(100, 0, 30, .18),
+        inset 10px 10px 25px rgba(255, 255, 255, .16);
+
+      animation:
+        heartbeat 1.45s
+        ease-in-out infinite;
+
+      z-index: 3;
+    }
+
+    .big-heart::before,
+    .big-heart::after {
+      content: "";
+
+      position: absolute;
+
+      width: 100%;
+      height: 100%;
+
+      border-radius: 50%;
+
+      background: inherit;
+    }
+
+    .big-heart::before {
+      top: -50%;
+      left: 0;
+    }
+
+    .big-heart::after {
+      top: 0;
+      left: 50%;
+    }
+
+    @keyframes heartbeat {
+      0%,
+      100% {
+        transform:
+          rotate(-45deg)
+          scale(1);
+      }
+
+      8% {
+        transform:
+          rotate(-45deg)
+          scale(1.08);
+      }
+
+      16% {
+        transform:
+          rotate(-45deg)
+          scale(1);
+      }
+
+      24% {
+        transform:
+          rotate(-45deg)
+          scale(1.045);
+      }
+
+      36%,
+      100% {
+        transform:
+          rotate(-45deg)
+          scale(1);
+      }
+    }
+
+    /* =========================
+        CHỮ TRONG TIM
+    ========================== */
+
+    .message {
+      position: absolute;
+      z-index: 5;
+
+      width: 100%;
+
+      text-align: center;
+
+      transform: translateY(-2%);
+
+      padding: 0 20px;
+
+      text-shadow:
+        0 3px 12px rgba(90, 0, 25, .55);
+    }
+
+    .message .line1,
+    .message .line2 {
+      display: block;
+
+      font-weight: 900;
+
+      letter-spacing: .02em;
+    }
+
+    .message .line1 {
+      font-size:
+        clamp(25px, 5vw, 48px);
+    }
+
+    .message .line2 {
+      margin-top: 5px;
+
+      font-size:
+        clamp(29px, 6vw, 58px);
+
+      color: #fff;
+    }
+
+    /* ========================= 4 ẢNH BAY Ở 4 GÓC ========================= */ 
+    .photo { 
+      position: absolute; 
+      z-index: 4; 
+      width: clamp(100px, 14vw, 155px); 
+      aspect-ratio: 1; 
+      object-fit: cover; 
+      border: 5px solid rgba(255, 255, 255, .92); 
+      border-radius: 18px; 
+      box-shadow: 0 15px 35px rgba(0, 0, 0, .45); 
+      background: #fff; 
+      animation: photoFloat 5s ease-in-out infinite; 
+    } 
+
+    .p1 { left: -2%; top: 4%; transform: rotate(-10deg); animation-delay: -1s; } 
+    .p2 { right: -2%; top: 3%; transform: rotate(9deg); animation-delay: -3s; } 
+    .p3 { left: -1%; bottom: 2%; transform: rotate(8deg); animation-delay: -2s; } 
+    .p4 { right: -1%; bottom: 1%; transform: rotate(-9deg); animation-delay: -4s; } 
+
+    @keyframes photoFloat { 
+      0%, 100% { translate: 0 0; } 
+      25% { translate: 10px -12px; } 
+      50% { translate: -5px -22px; } 
+      75% { translate: -10px -8px; } 
+    } 
+
+    /* =========================
+        HIỆU ỨNG LẤP LÁNH
+    ========================== */
+
+    .sparkle {
+      position: absolute;
+
+      z-index: 6;
+
+      color: #ffd5e0;
+
+      font-size: 22px;
+
+      animation:
+        sparkle 2s
+        ease-in-out infinite;
+    }
+
+    .s1 {
+      top: 8%;
+      left: 25%;
+    }
+
+    .s2 {
+      top: 19%;
+      right: 25%;
+
+      animation-delay: .5s;
+    }
+
+    .s3 {
+      bottom: 20%;
+      left: 24%;
+
+      animation-delay: 1s;
+    }
+
+    .s4 {
+      bottom: 13%;
+      right: 24%;
+
+      animation-delay: 1.4s;
+    }
+
+    @keyframes sparkle {
+      0%,
+      100% {
+        opacity: .25;
+
+        transform:
+          scale(.7)
+          rotate(0);
+      }
+
+      50% {
+        opacity: 1;
+
+        transform:
+          scale(1.25)
+          rotate(20deg);
+      }
+    }
+
+    /* =========================
+        DÒNG CHÚ THÍCH
+    ========================== */
+
+    .note {
+      position: absolute;
+
+      z-index: 7;
+
+      bottom: -12px;
+
+      left: 50%;
+
+      transform:
+        translateX(-50%);
+
+      padding:
+        9px 17px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(255, 255, 255, .1);
+
+      border:
+        1px solid rgba(255, 255, 255, .18);
+
+      backdrop-filter:
+        blur(8px);
+
+      font-size: 13px;
+
+      color:
+        rgba(255, 255, 255, .82);
+
+      white-space: nowrap;
+    }
+
+    /* =========================
+        MOBILE
+    ========================== */
+
+    @media (max-width: 650px) {
+      .hero {
+        width: 94vw;
+        aspect-ratio: .82;
+      }
+
+      .big-heart {
+        width: 55%;
+      }
+
+      .photo {
+        width: 78px;
+        border-width: 3px;
+        border-radius: 13px;
+      }
+
+      .p1 { left: 3%; top: 14%; }
+      .p2 { right: 3%; top: 12%; }
+      .p3 { left: 4%; bottom: 11%; }
+      .p4 { right: 4%; bottom: 9%; }
+
+      .note {
+        bottom: 0;
+        font-size: 11px;
+      }
+    }
+
+    /* =========================
+        GIẢM CHUYỂN ĐỘNG
+    ========================== */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration:
+          .001ms !important;
+
+        animation-iteration-count:
+          1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="stars" id="stars"></div>
+
+  <div class="hearts" id="hearts"></div>
+
+  <main>
+
+    <section
+      class="hero"
+      aria-label="SKIBIDI TRUC NHI"
+    >
+
+      <!-- ẢNH 1 -->
+      <img
+        class="photo p1"
+        src="https://i.pinimg.com/736x/77/19/00/77190088c8605dde08fdd0b3ab1a5441.jpg"
+        alt="Hình trang trí 1"
+        loading="eager"
+      />
+
+      <!-- ẢNH 2 -->
+      <img
+        class="photo p2"
+        src="https://i.pinimg.com/736x/6f/0c/7d/6f0c7dd236a49fef3d2c7ad9def7f87c.jpg"
+        alt="Hình trang trí 2"
+        loading="eager"
+      />
+
+      <!-- ẢNH 3 -->
+      <img
+        class="photo p3"
+        src="https://i.pinimg.com/736x/2d/84/bd/2d84bdf4abd6f05f6efa07a5008d0d98.jpg"
+        alt="Hình mèo trang trí"
+        loading="eager"
+      />
+
+      <!-- ẢNH 4 -->
+      <img
+        class="photo p4"
+        src="https://i.pinimg.com/736x/a1/b1/e8/a1b1e85f90678baa8013f9a430c6d108.jpg"
+        alt="Hình trang trí 4"
+        loading="eager"
+      />
+
+      <!-- TRÁI TIM -->
+      <div class="big-heart"></div>
+
+      <!-- CHỮ -->
+      <div class="message">
+
+        <span class="line1">
+          SKIBIDI
+        </span>
+
+        <span class="line2">
+          TRUC NHI
+        </span>
+
+      </div>
+
+      <!-- LẤP LÁNH -->
+      <span class="sparkle s1">✦</span>
+      <span class="sparkle s2">✧</span>
+      <span class="sparkle s3">✦</span>
+      <span class="sparkle s4">✧</span>
+
+      <div class="note">
+        ERRRRRR GAY 💗
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+    const hearts = document.getElementById("hearts");
+    const stars = document.getElementById("stars");
+
+    /* =========================
+        TIM NHỎ RƠI LIÊN TỤC
+    ========================== */
+
+    const heartCount = 70;
+
+    for (let i = 0; i < heartCount; i++) {
+      const h = document.createElement("span");
+      h.className = "heart";
+      h.textContent = Math.random() > 0.15 ? "♥" : "♡";
+      h.style.left = Math.random() * 100 + "vw";
+      h.style.setProperty("--size", (10 + Math.random() * 25) + "px");
+      h.style.setProperty("--opacity", (0.25 + Math.random() * 0.65).toFixed(2));
+      h.style.setProperty("--duration", (5 + Math.random() * 9) + "s");
+      h.style.setProperty("--delay", (-Math.random() * 14) + "s");
+      h.style.setProperty("--drift", (-80 + Math.random() * 160) + "px");
+      hearts.appendChild(h);
+    }
+
+    /* =========================
+        SAO LẤP LÁNH
+    ========================== */
+
+    for (let i = 0; i < 55; i++) {
+      const s = document.createElement("span");
+      s.className = "star";
+      s.style.left = Math.random() * 100 + "vw";
+      s.style.top = Math.random() * 100 + "vh";
+      s.style.animationDelay = (-Math.random() * 2) + "s";
+      s.style.animationDuration = (1.2 + Math.random() * 2.5) + "s";
+      stars.appendChild(s);
+    }
+  </script>
+
+</body>
+</html>
